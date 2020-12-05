@@ -40,5 +40,7 @@ export default class App extends Vue {}
   --info-mid: #459fd0;
   --warning-ultralight: #fde8e9;
   --warning-mid: #ed1c24;
+
+  --additional-elements-display: flex;
 }
 </style>
