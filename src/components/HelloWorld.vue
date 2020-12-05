@@ -1,15 +1,17 @@
 <template>
 	<form class="form">
-		<zoo-select inputerrormsg="Name is required" labeltext="Name" :valid="nameValid">
-			<select formControlName="select" slot="selectelement">
+		<zoo-select inputerrormsg="Name is required" :invalid="!nameValid">
+			<select id="select-id1" formControlName="select" slot="selectelement">
 				<option v-for="option in options" :value="option.id">{{ option.firstName }} {{ option.lastName }}</option>
 			</select>
+			<label for="select-id1" slot="selectlabel">Name</label>
 		</zoo-select>
-		<zoo-input labeltext="Input date field" inputerrormsg="Invalid value" infotext="Information text" :valid="dateValid">
-			<input type="date" placeholder="Placeholder" slot="inputelement"/>
+		<zoo-input labeltext="Input date field" inputerrormsg="Invalid value" infotext="Information text" :invalid="!dateValid">
+			<input id="input-id1" type="date" placeholder="Placeholder" slot="inputelement"/>
+			<label for="input-id1" slot="inputlabel">Input date field</label>
 		</zoo-input>
 		<zoo-button class="submit-button" size="small" v-on:click="submit()">
-			<span slot="buttoncontent">Submit</span>
+			<button type="button">Submit</button>
 		</zoo-button>
 	</form>
 </template>
@@ -46,7 +48,7 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style scoped lang="css">
 	.form {
 		max-width: 768px;
 		margin: 0 auto;
