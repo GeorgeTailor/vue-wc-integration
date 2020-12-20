@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <zoo-header headertext="Zoo web components in Vue">
+    <zoo-header>
       <img slot="img" alt="Zooplus logo" src="assets/logo.png"/>
+	  <h1 slot="headertext">Zoo web components in Vue</h1>
     </zoo-header>
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>

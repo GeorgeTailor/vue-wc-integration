@@ -1,60 +1,49 @@
 <template>
-  <form class="form">
-    <zoo-select inputerrormsg="Name is required" :invalid="!nameValid">
-      <select id="select-id1" formControlName="select" slot="selectelement">
-        <option v-for="option in options" v-bind:key="option.id" :value="option.id">
+  <form class="form" novalidate v-on:submit="submit($event)">
+    <zoo-select>
+      <select id="select-id1" formControlName="select" slot="select" required>
+        <option disabled selected value="">Please select a value</option>
+        <option
+          v-for="option in options"
+          v-bind:key="option.id"
+          :value="option.id"
+        >
           {{ option.firstName }} {{ option.lastName }}
         </option>
       </select>
-      <label for="select-id1" slot="selectlabel">Name</label>
+      <label for="select-id1" slot="label">Name</label>
+      <span slot="error">Name is required</span>
     </zoo-select>
-    <zoo-input
-      labeltext="Input date field"
-      inputerrormsg="Invalid value"
-      infotext="Information text"
-      :invalid="!dateValid"
-    >
-      <input
-        id="input-id1"
-        type="date"
-        placeholder="Placeholder"
-        slot="inputelement"
-      />
-      <label for="input-id1" slot="inputlabel">Input date field</label>
+    <zoo-input>
+      <input id="input-id1" type="date" slot="input" required/>
+      <label for="input-id1" slot="label">Input date field</label>
+      <span slot="info">Information text</span>
+      <span slot="error">Invalid value</span>
     </zoo-input>
-    <zoo-button v-on:click="submit()">
-      <button type="button">Submit</button>
+    <zoo-button>
+      <button type="submit">Submit</button>
     </zoo-button>
   </form>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class HelloWorld extends Vue {
   private options = [
     {
-      firstName: 'firstName',
-      lastName: 'lastName',
+      firstName: "firstName",
+      lastName: "lastName",
     },
   ];
   private name: any;
-  private nameValid = true;
   private date: any;
-  private dateValid = true;
 
-  public submit() {
-    if (this.name && this.date) {
-      return true;
-    }
-
-    if (!this.name) {
-      this.nameValid = false;
-    }
-    if (!this.date) {
-      this.dateValid = false;
-    }
+  public submit(e: any) {
+	  console.log(e)
+    e.preventDefault();
+    e.target.checkValidity();
   }
 }
 </script>
