@@ -2,7 +2,7 @@
   <form class="form" novalidate v-on:submit="submit($event)">
     <zoo-select>
       <select id="select-id1" formControlName="select" slot="select" required>
-        <option disabled selected value="">Please select a value</option>
+        <option disabled selected value="">Please choose an option</option>
         <option
           v-for="option in options"
           v-bind:key="option.id"
